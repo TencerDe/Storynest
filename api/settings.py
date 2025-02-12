@@ -79,13 +79,12 @@ WSGI_APPLICATION = 'api.wsgi.app'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME', 'postgres'),
-        'USER': os.getenv('DB_USER', 'postgres.avcuvzxssvxobqragbui'),
-        'PASSWORD': os.getenv('DB_PASSWORD', 'Tanujbase@1234'),
-        'HOST': os.getenv('DB_HOST', 'localhost'),
-        'PORT': os.getenv('DB_PORT', '5432'),
-        
-    },
+        'NAME': 'postgres',
+        'USER': 'postgres.avcuvzxssvxobqragbui',
+        'PASSWORD': 'Tanujbase@1234',
+        'HOST': 'aws-0-ap-south-1.pooler.supabase.com',
+        'PORT': '6543',
+    }
 }
 #Using python-dotenv
 
