@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -69,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'api.wsgi.application'
+WSGI_APPLICATION = 'api.wsgi.app'
 
 
 # Database
@@ -77,11 +78,30 @@ WSGI_APPLICATION = 'api.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME', 'postgres'),
+        'USER': os.getenv('DB_USER', 'postgres.avcuvzxssvxobqragbui'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'Tanujbase@1234'),
+        'HOST': os.getenv('DB_HOST', 'localhost'),
+        'PORT': os.getenv('DB_PORT', '5432'),
+        
+    },
 }
+#Using python-dotenv
 
+
+'''
+1. Package install
+2. Create .env file
+3. Add environment variables
+4. Vercel mein environment variable add karne hain
+
+user=postgres.avcuvzxssvxobqragbui 
+password=[YOUR-PASSWORD] 
+host=aws-0-ap-south-1.pooler.supabase.com
+port=6543
+dbname=postgres
+'''
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
